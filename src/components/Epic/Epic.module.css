@@ -1,0 +1,34 @@
+.Epic {
+  height: 100vh;
+  --tabbar-height: 50px;
+}
+.EpicContent {
+  height: calc(100vh - var(--tabbar-height));
+}
+.Tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--tabbar-height);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 2px solid #e4e4e4;
+}
+.ActiveTabbarItem {
+  color: red;
+}
+.TabbarItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.TabbarItemIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

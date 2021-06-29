@@ -1,11 +1,14 @@
 import React from 'react'
 import './App.css'
 import Main from './views/Main'
+import { AppStorage } from './store/AppStorage'
 
-function App() {
+const appStore = new AppStorage()
+
+const App = () => {
   return (
     <div className="App">
-      <Main />
+      <Main store={appStore} />
     </div>
   )
 }

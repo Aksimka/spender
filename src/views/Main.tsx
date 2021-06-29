@@ -1,59 +1,59 @@
 import Epic, { TabbarItem } from '../components/Epic/Epic'
 import CardIcon from '../components/Icons/CardIcon'
-import { useState } from 'react'
+import { observer } from 'mobx-react'
 import View from '../components/View/View'
 
-export default function Main() {
+const Main = (props: any) => {
+  const { store } = props
   const tabbar: TabbarItem[] = [
     {
-      story: 'index',
-      link: '/',
+      story: 'wallets',
+      link: '/wallets',
       icon: <CardIcon width={32} height={32} />,
     },
     {
-      story: 'feed',
-      link: '/feed',
+      story: 'categories',
+      link: '/categories',
       icon: <CardIcon width={32} height={32} />,
     },
     {
-      story: 'main',
-      link: '/',
+      story: 'operations',
+      link: '/operations',
       icon: <CardIcon width={32} height={32} />,
     },
     {
-      story: 'test4',
-      link: '/test4',
-      icon: <CardIcon width={32} height={32} />,
-    },
-    {
-      story: 'test5',
-      link: '/test5',
+      story: 'charts',
+      link: '/charts',
       icon: <CardIcon width={32} height={32} />,
     },
   ]
 
-  let [activeStory, setActiveStory] = useState('feed')
-
   const onStoryChange = (e: TabbarItem): void => {
-    setActiveStory(e.story)
-    // e.link && router.push(e.link)
+    store.changeActiveEpic(e.story)
   }
 
   return (
-    <Epic
-      activeStory={activeStory}
-      tabbar={tabbar}
-      onChangeStory={onStoryChange}
-    >
-      <View>
-        <div>qwe</div>
-      </View>
-      <View>
-        <div>qwe</div>
-      </View>
-      <View>
-        <div>qwe</div>
-      </View>
-    </Epic>
+    <>
+      <Epic
+        activeStory={store.activeEpic}
+        tabbar={tabbar}
+        onChangeStory={onStoryChange}
+      >
+        <View id="wallets">
+          <div>wallets</div>
+        </View>
+        <View id="categories">
+          <div>categories</div>
+        </View>
+        <View id="operations">
+          <div>operations</div>
+        </View>
+        <View id="charts">
+          <div>charts</div>
+        </View>
+      </Epic>
+    </>
   )
 }
+
+export default observer(Main)

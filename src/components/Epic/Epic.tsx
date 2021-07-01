@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 import styles from './Epic.module.css'
 import classNames from 'classnames'
+import Touchable from '../ui/Touchable/Touchable'
 
 export interface TabbarItem {
   story: string
@@ -46,7 +47,10 @@ const Epic = (props: PropTypes): ReactElement => {
                   onClick={(e) => handleTabbarClick(i)}
                   key={i.story}
                 >
-                  {i.icon}
+                  <Touchable>
+                    {i.icon}
+                  </Touchable>
+
                 </div>
               )
             })

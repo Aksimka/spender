@@ -1,0 +1,6 @@
+.touchable {
+  transition: .2s;
+}
+.touchable:active {
+  transform: scale(.95);
+}
